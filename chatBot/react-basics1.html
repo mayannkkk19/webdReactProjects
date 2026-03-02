@@ -13,13 +13,29 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
       const container = document.querySelector('.js-container');
-      const interval  = setInterval(() => {
-        const currentTime = dayjs().format('HH:mm:ss');
-        const design = (
-          <p>{currentTime}</p>
+
+      function ItemBox ({item, price, discountPrice}) {
+        return (
+          <div>
+              <p>{item}</p>
+              {discountPrice ? (<p><del>Price: ${price}</del></p>) : (<p>Price: ${price}</p>)}
+              {discountPrice ? (<p>Discount price: ${discountPrice}</p>) : ''}
+              <button>Add to cart</button>
+          </div>
+        ); 
+      }
+      
+      function App () {
+        return (
+          <>
+            <ItemBox item="Cotton socks" price="10.90" discountPrice="5.45" />
+            <ItemBox item="Tennis balls" price="6.00" />
+            <ItemBox item="Plain T-Shirt" price="7.99" discountPrice="2.67" />
+          </>
         );
-        ReactDOM.createRoot(container).render(design);
-      }, 1000);
+      }
+
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
