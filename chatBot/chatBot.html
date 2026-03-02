@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Basics</title>
+    <title>Chatbot</title>
   </head>
   <body>
     <div class="js-container"></div>
@@ -10,9 +10,46 @@
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
     <script type="text/babel">
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render('Welcome to SuperSimpleDev React Course');
+
+      function ChatInput () {
+        return (
+          <>
+            <input placeholder="Send a message to Chatbot" width="30" />
+            <button>Send</button>
+          </>
+        );
+      }
+
+      function ChatMessage ({message, sender}) {
+        return (
+          <div>
+            {sender === 'robot' ? (<img src="images/robot.png" width="44px" />) : ''}
+            {message}
+            {sender === 'user' ? (<img src="images/user.png" width="44px" />) : ''}
+          </div>
+        );
+      }
+
+
+      function App ()  {
+        return (
+          <>
+            <ChatInput />
+            <ChatMessage message="Hello chatbot" sender="user" />
+            <ChatMessage message="Hello! How can I help you?" sender="robot" />
+            <ChatMessage message="Flip a coin" sender="user" />
+            <ChatMessage message="Sure! You got heads" sender="robot" />
+            <ChatMessage message="Todays date" sender="user" />
+            <ChatMessage message="Today is March 2" sender="robot" />
+          </>
+        );
+      }
+
+
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
