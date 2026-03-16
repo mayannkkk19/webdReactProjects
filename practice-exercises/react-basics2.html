@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const container = document.querySelector('.js-container');  
+
+      function CounterButton ({updateCounter, countIs}) {
+        return (
+          <button onClick={updateCounter}>Count is {countIs}</button>
+        );
+      }
+
+      function App () {
+        const [countIs, setCount] = React.useState(0);
+
+        function updateCounter () {
+          setCount(countIs+1);
+        }
+        return (
+          <>
+            <CounterButton countIs={countIs} updater={setCount} updateCounter={updateCounter}/>
+            <CounterButton countIs={countIs} updater={setCount} updateCounter={updateCounter}/>
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
