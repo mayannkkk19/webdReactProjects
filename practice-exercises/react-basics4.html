@@ -2,6 +2,27 @@
 <html>
   <head>
     <title>React Basics</title>
+
+    <style>
+      .login-button,.signup-button {
+        background-color: rgb(0, 123, 255);
+        border: none;
+        padding: 10px 20px 10px 20px;
+        margin: 10px;
+        margin-left: 0;
+        border-radius: 4px;
+        color: white;
+        font-family: arial;
+      }
+
+      .password-input,.email-input {
+        padding: 10px 10px 10px 18px;
+        margin-bottom: 10px;
+        margin-right: 14px;
+        border-radius: 4px;
+        border-style: solid;
+      }
+    </style>
   </head>
   <body>
     <div class="js-container"></div>
@@ -14,25 +35,38 @@
     <script type="text/babel">
       const container = document.querySelector('.js-container');
 
-      function InputOutput () {
-        const [text, setText] = React.useState('');
-        function writeText (event) {
-          const newText = event.target.value;
-          setText(newText);
+      function EmailForm () {
+        const [showPass, setShowPass] = React.useState(false);
+
+        function hidePassword () {
+          if(showPass){
+            setShowPass(false);
+          }else{
+           setShowPass(true);
+          }
+
+          console.log('changed');
         }
 
-        React.useState();
         return (
-          <div>
-            <input onChange={writeText} placeholder="type something..."  value={text}/>
-            <p>{text}</p>
-          </div>
+          <>
+            <h1>Hello, welcome to my website</h1>
+            <input className="email-input" placeholder = "Email" />
+            <div>
+              <input className="password-input" placeholder= "Password" type={showPass ? 'password' : 'text'} />
+              <button onClick={hidePassword}>Hide</button>
+            </div>  
+            <div>
+              <button className="login-button">Login</button>
+              <button className="signup-button">Sign up</button>
+            </div>
+          </>
         );
       }
 
       function App () {
         return (
-          <InputOutput />
+          <EmailForm />
         );
       }
 
