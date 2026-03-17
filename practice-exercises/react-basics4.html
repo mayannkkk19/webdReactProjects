@@ -44,8 +44,6 @@
           }else{
            setShowPass(true);
           }
-
-          console.log('changed');
         }
 
         return (
@@ -53,8 +51,8 @@
             <h1>Hello, welcome to my website</h1>
             <input className="email-input" placeholder = "Email" />
             <div>
-              <input className="password-input" placeholder= "Password" type={showPass ? 'password' : 'text'} />
-              <button onClick={hidePassword}>Hide</button>
+              <input className="password-input" placeholder= "Password" type={showPass ? 'text' : 'password'} />
+              <button onClick={hidePassword}>{ showPass ? 'Hide' : 'Show'}</button>
             </div>  
             <div>
               <button className="login-button">Login</button>
