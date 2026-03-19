@@ -15,15 +15,18 @@ function ChatMessages({ chatMessages }) {
 
   return (
     <div className="chat-messages-container" ref={chatMessagesRef}>
-      {chatMessages.map((chatMessage) => {
-        return (
-          <ChatMessage
-            message={chatMessage.message}
-            sender={chatMessage.sender}
-            key={chatMessage.id}
-          />
-        );
-      })}
+      {chatMessages.length === 0 ? 
+      <p className="empty-chat-message">Welcome to Chatbot project! Send a message using the textbox below.</p> : 
+        chatMessages.map((chatMessage) => {
+          return (
+            <ChatMessage
+              message={chatMessage.message}
+              sender={chatMessage.sender}
+              key={chatMessage.id}
+            />
+          );
+        })
+      }
     </div>
   );
 }

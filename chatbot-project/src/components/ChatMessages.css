@@ -4,3 +4,8 @@
   overflow: scroll;
   scrollbar-width: none;
 }
+
+.empty-chat-message {
+  color: grey;
+  text-align: center;
+}
