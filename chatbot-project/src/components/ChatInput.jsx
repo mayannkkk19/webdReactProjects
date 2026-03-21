@@ -18,7 +18,8 @@ export function ChatInput({ chatMessages, setChatMessages }) {
     }
   }
 
-  function sendMessage() {
+  async function sendMessage() {
+    const messageToSend = inputText;
     const currentMessage = [
       ...chatMessages,
       {
@@ -27,10 +28,20 @@ export function ChatInput({ chatMessages, setChatMessages }) {
         id: crypto.randomUUID(),
       },
     ];
-    setChatMessages(currentMessage);
 
-    const response = Chatbot.getResponse(inputText);
+    const loadingMessage = [
+      ...currentMessage,
+      {
+        message: 'Loading...',
+        sender: 'robot',
+        id: crypto.randomUUID(),
+      },
+    ];
+    setChatMessages(loadingMessage);
+    
+    setInputText("");
 
+    const response = await(Chatbot.getResponseAsync(messageToSend));
     setChatMessages([
       ...currentMessage,
       {
