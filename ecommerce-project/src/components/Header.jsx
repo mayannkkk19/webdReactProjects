@@ -7,7 +7,7 @@ export function Header({ cart }) {
     totalQuantity += cartItem.quantity;
   });
 
-  return (
+  return ( 
     <div className="header">
       <div className="left-section">
         <Link to="/" className="header-link">
