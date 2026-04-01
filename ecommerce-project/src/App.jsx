@@ -1,4 +1,4 @@
-import { HomePage } from "./pages/HomePage";
+import { HomePage } from "./pages/homepage/HomePage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrdersPage } from "./pages/OrdersPage";
 import { TrackingPage } from "./pages/TrackingPage";
@@ -9,10 +9,12 @@ import "./App.css";
 
 function App() {
   const [cart, setCart] = useState([]);
-  useEffect(() => {
-    axios.get('/api/cart-items?expand=product').then((response) => {
+  useEffect(() =>{
+    const getCartData = async () => {
+      const response =  await axios.get('/api/cart-items?expand=product');
       setCart(response.data);
-    });
+    };
+    getCartData();
   }, []);
   return (
     <Routes>
