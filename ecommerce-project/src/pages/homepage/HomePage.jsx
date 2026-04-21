@@ -1,7 +1,7 @@
 import { Header } from "../../components/Header";
 import { ProductsGrid } from  "./ProductsGrid";
 import "./HomePage.css";
-export function HomePage({cart}) {
+export function HomePage({cart, loadCart}) {
   return (  
     <>
       <title>E-Commerce Project</title>
@@ -11,7 +11,7 @@ export function HomePage({cart}) {
       <div className="home-page">
         <div className="products-grid">
 
-          <ProductsGrid />
+          <ProductsGrid loadCart={loadCart} />
 
         </div>
       </div>
